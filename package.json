@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "2.8.8"
+  },
+  "name": "tic-tac-toe-game",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xBioTech/Tic-Tac-Toe-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xBioTech/Tic-Tac-Toe-Game/issues"
+  },
+  "homepage": "https://github.com/xBioTech/Tic-Tac-Toe-Game#readme"
+}
