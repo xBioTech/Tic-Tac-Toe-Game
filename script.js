@@ -19,6 +19,7 @@ const gameBoard = (() => {
   function makeMove(player, row, col) {
     board[row][col] = player.marker;
     gameController.checkWin(board);
+    currentPlayer = gameController.switchPlayerTurn();
   }
 
   createGameBoard();
@@ -34,6 +35,8 @@ const player = (name, marker) => ({ name, marker });
 
 const player1 = player("john", "X");
 const player2 = player("jane", "O");
+
+let currentPlayer = player1;
 
 const gameController = (() => {
   function checkWin(board) {
@@ -136,11 +139,22 @@ const gameController = (() => {
       console.log(`${player2.name}won diagonal`);
     }
   }
+
+  function switchPlayerTurn() {
+    if (currentPlayer === player1) {
+      return player2;
+    }
+    return player1;
+  }
   return {
     checkWin,
+    switchPlayerTurn,
   };
 })();
-gameBoard.makeMove(player1, [0], [2]);
-gameBoard.makeMove(player1, [1], [1]);
-gameBoard.makeMove(player1, [2], [0]);
+gameBoard.makeMove(currentPlayer, [0], [2]);
+gameBoard.makeMove(currentPlayer, [1], [1]);
+gameBoard.makeMove(currentPlayer, [2], [0]);
+gameBoard.makeMove(currentPlayer, [2], [2]);
+gameBoard.makeMove(currentPlayer, [0], [1]);
+gameBoard.makeMove(currentPlayer, [0], [0]);
 console.log(gameBoard.getBoard());
