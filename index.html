@@ -7,5 +7,21 @@
     <title>Tic-Tac-Toe</title>
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="title">
+      <h1>X <span>O</span></h1>
+    </div>
+
+    <div class="select-box">
+      <p>Pick Player 1’s mark</p>
+      <div class="toggle-checkbox-container">
+        <input type="checkbox" id="toggle-checkbox" name="toggle-checkbox" />
+        <label for="toggle-checkbox">
+          <div class="toggle-switch" data-unchecked="X" data-checked="O"></div>
+        </label>
+      </div>
+      <p>Remember <span>X</span> goes first</p>
+      <button>New Game</button>
+    </div>
+  </body>
 </html>
