@@ -17,9 +17,16 @@ const gameBoard = (() => {
   };
 
   function makeMove(player, row, col) {
-    board[row][col] = player.marker;
-    gameController.checkWin(board);
-    currentPlayer = gameController.switchPlayerTurn();
+    if (gameController.checkValidMove(board, row, col)) {
+      board[row][col] = player.marker;
+      gameController.checkWin(board);
+      currentPlayer = gameController.switchPlayerTurn();
+      if (gameController.checkDraw(board) && !gameController.checkWin(board)) {
+        console.log("DRAW");
+      }
+    } else {
+      console.log("move invalid");
+    }
   }
 
   createGameBoard();
@@ -140,6 +147,24 @@ const gameController = (() => {
     }
   }
 
+  function checkDraw(board) {
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j] === "") {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function checkValidMove(board, row, col) {
+    if (board[row][col] === "") {
+      return true;
+    }
+    return false;
+  }
+
   function switchPlayerTurn() {
     if (currentPlayer === player1) {
       return player2;
@@ -149,12 +174,11 @@ const gameController = (() => {
   return {
     checkWin,
     switchPlayerTurn,
+    checkDraw,
+    checkValidMove,
   };
 })();
-gameBoard.makeMove(currentPlayer, [0], [2]);
-gameBoard.makeMove(currentPlayer, [1], [1]);
-gameBoard.makeMove(currentPlayer, [2], [0]);
-gameBoard.makeMove(currentPlayer, [2], [2]);
-gameBoard.makeMove(currentPlayer, [0], [1]);
-gameBoard.makeMove(currentPlayer, [0], [0]);
+gameBoard.makeMove(currentPlayer, 1, 1);
+gameBoard.makeMove(currentPlayer, 1, 1);
+gameBoard.makeMove(currentPlayer, 2, 1);
 console.log(gameBoard.getBoard());
