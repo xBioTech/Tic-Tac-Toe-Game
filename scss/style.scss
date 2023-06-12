@@ -1,5 +1,107 @@
+$primary-color: #39c4bf;
+$secondary-color: #f1b142;
+$sidecolor: #a9bfc9;
+$cellcolor: #203640;
+$background-color: #1a2a32;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.title {
+  text-align: center;
+  .titleheading {
+    color: $primary-color;
+  }
+  .titlespan {
+    color: $secondary-color;
+  }
+}
+
+.select-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  margin: 0 auto;
+  border-radius: 8px;
+  max-width: 80%;
+  background-color: $cellcolor;
+  color: $sidecolor;
+
+  .toggle-checkbox-container {
+    width: 250px;
+    height: 60px;
+    input#toggle-checkbox {
+      display: none;
+      + label {
+        width: 100%;
+        height: 100%;
+        > .toggle-switch {
+          cursor: pointer;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 8px;
+          padding: 3px;
+          transition: all 0.5s ease;
+          background-color: $background-color;
+          color: $sidecolor;
+          &:before,
+          &:after {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            height: calc(100% - 6px);
+            width: calc(50% - 3px);
+          }
+          &:before {
+            background-color: $sidecolor;
+            color: $background-color;
+            z-index: 10;
+            left: 3px;
+            content: attr(data-unchecked);
+          }
+          &:after {
+            background-color: $background-color;
+            color: $sidecolor;
+            right: 0;
+            content: attr(data-checked);
+          }
+        }
+      }
+      &:checked + label > .toggle-switch {
+        &:after {
+          left: 0;
+          content: attr(data-unchecked);
+        }
+        &:before {
+          left: 50%;
+          content: attr(data-checked);
+        }
+      }
+    }
+  }
+}
+.new-game-buttons {
+  display: flex;
+  justify-content: center;
+  .new-game-btn {
+    background-color: $secondary-color;
+    color: $background-color;
+    cursor: pointer;
+    border: none;
+    border-bottom: 5px solid #ca8827;
+    border-radius: 8px;
+    padding: 0.4rem 3rem;
+  }
 }
