@@ -9,22 +9,66 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="title">
-      <h1 class="titleheading">X <span class="titlespan">O</span></h1>
+    <div class="new-game-screen">
+      <div class="title">
+        <h1 class="titleheading">X <span class="titlespan">O</span></h1>
+      </div>
+
+      <div class="select-box">
+        <p>Pick Player 1’s mark</p>
+        <div class="toggle-checkbox-container">
+          <input type="checkbox" id="toggle-checkbox" name="toggle-checkbox" />
+          <label for="toggle-checkbox">
+            <div
+              class="toggle-switch"
+              data-unchecked="X"
+              data-checked="O"
+            ></div>
+          </label>
+        </div>
+        <p>Remember X goes first</p>
+      </div>
+      <div class="new-game-buttons">
+        <button class="new-game-btn">New Game</button>
+      </div>
     </div>
 
-    <div class="select-box">
-      <p>Pick Player 1’s mark</p>
-      <div class="toggle-checkbox-container">
-        <input type="checkbox" id="toggle-checkbox" name="toggle-checkbox" />
-        <label for="toggle-checkbox">
-          <div class="toggle-switch" data-unchecked="X" data-checked="O"></div>
-        </label>
+    <div class="gameboard">
+      <div class="header">
+        <h1 class="titleheading">X <span class="titlespan">O</span></h1>
+        <div class="playerturn">
+          <p>X</p>
+          <p>Turn</p>
+        </div>
+        <button>Back</button>
       </div>
-      <p>Remember X goes first</p>
-    </div>
-    <div class="new-game-buttons">
-      <button class="new-game-btn">New Game</button>
+
+      <div class="grid">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+
+      <div class="footer">
+        <div class="indicator wins-x">
+          <p>X</p>
+          <p class="score">14</p>
+        </div>
+        <div class="indicator tie">
+          <p>TIES</p>
+          <p class="score">32</p>
+        </div>
+        <div class="indicator wins-o">
+          <p>O</p>
+          <p class="score">11</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

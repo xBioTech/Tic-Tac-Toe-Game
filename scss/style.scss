@@ -14,101 +14,185 @@ body {
   background-color: $background-color;
 }
 
-.title {
-  text-align: center;
-  margin-top: 2rem;
-  .titleheading {
-    color: $primary-color;
-  }
-  .titlespan {
-    color: $secondary-color;
-  }
-}
-
-.select-box {
+.new-game-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 3rem 0;
-  margin: 0 auto;
-  border-radius: 8px;
-  max-width: 80%;
-  background-color: $cellcolor;
-  color: $sidecolor;
-  margin: 2rem 2rem;
+  display: none;
+  .title {
+    margin-top: 2rem;
+    .titleheading {
+      color: $primary-color;
+    }
+    .titlespan {
+      color: $secondary-color;
+    }
+  }
 
-  .toggle-checkbox-container {
-    width: 250px;
-    height: 60px;
-    input#toggle-checkbox {
-      display: none;
-      + label {
-        width: 100%;
-        height: 100%;
-        > .toggle-switch {
-          cursor: pointer;
-          position: relative;
+  .select-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 3rem;
+    border-radius: 8px;
+    max-width: 80%;
+    background-color: $cellcolor;
+    color: $sidecolor;
+    margin: 2rem 2rem;
+
+    .toggle-checkbox-container {
+      width: 250px;
+      height: 60px;
+      input#toggle-checkbox {
+        display: none;
+        + label {
           width: 100%;
           height: 100%;
-          border-radius: 8px;
-          padding: 3px;
-          transition: all 0.5s ease;
-          background-color: $background-color;
-          color: $sidecolor;
-          &:before,
-          &:after {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            transition: all 0.3s ease;
+          > .toggle-switch {
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            height: 100%;
             border-radius: 8px;
-            height: calc(100% - 6px);
-            width: calc(50% - 3px);
-          }
-          &:before {
-            background-color: $sidecolor;
-            color: $background-color;
-            z-index: 10;
-            left: 3px;
-            content: attr(data-unchecked);
-          }
-          &:after {
+            padding: 4.4px;
+            transition: all 0.5s ease;
             background-color: $background-color;
             color: $sidecolor;
-            right: 0;
+            &:before,
+            &:after {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              transition: all 0.3s ease;
+              border-radius: 8px;
+              height: calc(100% - 10px);
+              width: calc(50% - 3px);
+            }
+            &:before {
+              background-color: $sidecolor;
+              color: $background-color;
+              z-index: 10;
+              left: 3px;
+              content: attr(data-unchecked);
+            }
+            &:after {
+              background-color: $background-color;
+              color: $sidecolor;
+              right: 0;
+              content: attr(data-checked);
+            }
+          }
+        }
+        &:checked + label > .toggle-switch {
+          &:after {
+            left: 0;
+            content: attr(data-unchecked);
+          }
+          &:before {
+            left: 50%;
             content: attr(data-checked);
           }
         }
       }
-      &:checked + label > .toggle-switch {
-        &:after {
-          left: 0;
-          content: attr(data-unchecked);
-        }
-        &:before {
-          left: 50%;
-          content: attr(data-checked);
-        }
+    }
+  }
+  .new-game-buttons {
+    display: flex;
+    justify-content: center;
+    .new-game-btn {
+      background-color: $secondary-color;
+      color: $background-color;
+      cursor: pointer;
+      border: none;
+      border-bottom: 5px solid #ca8827;
+      border-radius: 8px;
+      padding: 0.4rem 3rem;
+      transition: transform 0.2s ease;
+      &:active {
+        transform: scale(0.8);
       }
     }
   }
 }
-.new-game-buttons {
-  display: flex;
-  justify-content: center;
-  .new-game-btn {
-    background-color: $secondary-color;
-    color: $background-color;
-    cursor: pointer;
-    border: none;
-    border-bottom: 5px solid #ca8827;
-    border-radius: 8px;
-    padding: 0.4rem 3rem;
-    transition: transform 0.2s ease;
-    &:active {
-      transform: scale(0.8);
+
+.gameboard {
+  .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+    .titleheading {
+      color: $primary-color;
+    }
+    .titlespan {
+      color: $secondary-color;
+    }
+    .playerturn {
+      background-color: $cellcolor;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      border-radius: 8px;
+      padding: 0.5rem 0.5rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      p {
+        color: $sidecolor;
+        text-transform: uppercase;
+      }
+    }
+    button {
+      background-color: $sidecolor;
+      color: $background-color;
+      border: none;
+      cursor: pointer;
+      padding: 0.8rem 0.3rem;
+      border-bottom: 6px solid #6d8a97;
+    }
+  }
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(3, 0.4fr);
+    grid-template-columns: repeat(3, 0.4fr);
+    justify-items: center;
+    row-gap: 2rem;
+    margin-top: 3rem;
+    button {
+      width: 90px;
+      height: 90px;
+      background-color: $cellcolor;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      font-size: 1.3rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 3rem;
+    .indicator {
+      color: $background-color;
+      border-radius: 8px;
+      padding: 0.6rem 2.3rem;
+    }
+    .score {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .wins-x {
+      background-color: $primary-color;
+    }
+    .tie {
+      background-color: $sidecolor;
+    }
+    .wins-o {
+      background-color: $secondary-color;
     }
   }
 }
