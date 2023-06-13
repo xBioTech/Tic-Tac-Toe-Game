@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  display: none;
+
   .title {
     margin-top: 2rem;
     .titleheading {
@@ -40,7 +40,7 @@ body {
     background-color: $cellcolor;
     color: $sidecolor;
     margin: 2rem 2rem;
-
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     .toggle-checkbox-container {
       width: 250px;
       height: 60px;
@@ -108,7 +108,7 @@ body {
       border: none;
       border-bottom: 5px solid #ca8827;
       border-radius: 8px;
-      padding: 0.4rem 3rem;
+      padding: 0.6rem 5.5rem;
       transition: transform 0.2s ease;
       &:active {
         transform: scale(0.8);
@@ -118,6 +118,8 @@ body {
 }
 
 .gameboard {
+  display: none;
+  position: relative;
   .header {
     display: flex;
     justify-content: space-around;
@@ -149,6 +151,10 @@ body {
       cursor: pointer;
       padding: 0.8rem 0.3rem;
       border-bottom: 6px solid #6d8a97;
+      transition: transform 0.2s ease;
+      &:active {
+        transform: scale(0.8);
+      }
     }
   }
   .grid {
@@ -194,5 +200,47 @@ body {
     .wins-o {
       background-color: $secondary-color;
     }
+  }
+}
+
+.win-state {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $background-color;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+
+  .win-lose-status {
+    text-transform: uppercase;
+    color: $sidecolor;
+    margin-top: 2rem;
+  }
+  .game-over {
+    text-transform: uppercase;
+    color: $primary-color;
+    margin: 1rem 1rem;
+  }
+  .win-state-btn {
+    border: none;
+    color: $background-color;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+  .quit {
+    background-color: $sidecolor;
+    border-bottom: 6px solid #6d8a97;
+  }
+  .next-round {
+    background-color: $secondary-color;
+    border-bottom: 6px solid #ca8827;
   }
 }

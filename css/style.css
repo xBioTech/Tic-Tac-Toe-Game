@@ -12,7 +12,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  display: none;
 }
 .new-game-screen .title {
   margin-top: 2rem;
@@ -34,6 +33,7 @@ body {
   background-color: #203640;
   color: #a9bfc9;
   margin: 2rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .new-game-screen .select-box .toggle-checkbox-container {
   width: 250px;
@@ -99,13 +99,17 @@ body {
   border: none;
   border-bottom: 5px solid #ca8827;
   border-radius: 8px;
-  padding: 0.4rem 3rem;
+  padding: 0.6rem 5.5rem;
   transition: transform 0.2s ease;
 }
 .new-game-screen .new-game-buttons .new-game-btn:active {
   transform: scale(0.8);
 }
 
+.gameboard {
+  display: none;
+  position: relative;
+}
 .gameboard .header {
   display: flex;
   justify-content: space-around;
@@ -138,6 +142,10 @@ body {
   cursor: pointer;
   padding: 0.8rem 0.3rem;
   border-bottom: 6px solid #6d8a97;
+  transition: transform 0.2s ease;
+}
+.gameboard .header button:active {
+  transform: scale(0.8);
 }
 .gameboard .grid {
   display: grid;
@@ -182,6 +190,47 @@ body {
 }
 .gameboard .footer .wins-o {
   background-color: #f1b142;
+}
+
+.win-state {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1a2a32;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+}
+.win-state .win-lose-status {
+  text-transform: uppercase;
+  color: #a9bfc9;
+  margin-top: 2rem;
+}
+.win-state .game-over {
+  text-transform: uppercase;
+  color: #39c4bf;
+  margin: 1rem 1rem;
+}
+.win-state .win-state-btn {
+  border: none;
+  color: #1a2a32;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.win-state .win-state-btn:active {
+  transform: scale(0.8);
+}
+.win-state .quit {
+  background-color: #a9bfc9;
+  border-bottom: 6px solid #6d8a97;
+}
+.win-state .next-round {
+  background-color: #f1b142;
+  border-bottom: 6px solid #ca8827;
 }
 
 /*# sourceMappingURL=style.css.map */
