@@ -2,15 +2,20 @@ const gameBoard = (() => {
   const board = [];
   const rows = 3;
   const columns = 3;
+  const grid = document.querySelector(".grid");
 
   function createGameBoard() {
     for (let i = 0; i < rows; i++) {
       board[i] = [];
       for (let j = 0; j < columns; j++) {
         board[i][j] = "";
+        const gameboardButtons = document.createElement("button");
+        grid.appendChild(gameboardButtons);
       }
     }
   }
+
+  createGameBoard();
 
   const getBoard = function () {
     return board;
@@ -29,14 +34,42 @@ const gameBoard = (() => {
     }
   }
 
-  createGameBoard();
+  const newGameScreen = document.querySelector(".new-game-screen");
+  const gameboardUi = document.querySelector(".gameboard");
+
+  function startNewGame() {
+    const newGameButton = document.querySelector(".new-game-btn");
+
+    newGameButton.addEventListener("click", () => {
+      setTimeout(() => {
+        newGameScreen.style.display = "none";
+        gameboardUi.style.display = "block";
+      }, 200);
+    });
+  }
+
+  function goBackToPlayerSelection() {
+    const backBtn = document.querySelector(".back-btn");
+
+    backBtn.addEventListener("click", () => {
+      setTimeout(() => {
+        gameboardUi.style.display = "none";
+        newGameScreen.style.display = "flex";
+      }, 200);
+    });
+  }
 
   return {
     board,
     getBoard,
     makeMove,
+    startNewGame,
+    goBackToPlayerSelection,
   };
 })();
+
+gameBoard.startNewGame();
+gameBoard.goBackToPlayerSelection();
 
 const player = (name, marker) => ({ name, marker });
 
