@@ -3,7 +3,6 @@ const gameBoard = (() => {
   const rows = 3;
   const columns = 3;
   const grid = document.querySelector(".grid");
-  const gameboardButtonsArray = [];
   const player = (name, marker) => ({ name, marker });
 
   const player1 = player("player1", "X");
@@ -20,7 +19,6 @@ const gameBoard = (() => {
         gameboardButtons.addEventListener("click", () => {
           makeMove(currentPlayer, i, j);
         });
-        gameboardButtonsArray.push(gameboardButtons);
         grid.appendChild(gameboardButtons);
       }
     }
@@ -70,6 +68,7 @@ const gameBoard = (() => {
       setTimeout(() => {
         gameboardUi.style.display = "none";
         newGameScreen.style.display = "flex";
+        gameController.resetBoard(board);
       }, 200);
     });
   }
@@ -211,10 +210,20 @@ const gameController = (() => {
     }
     return gameBoard.player1;
   }
+
+  function resetBoard(board) {
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        board[i][j] = "";
+      }
+    }
+  }
+
   return {
     checkWin,
     switchPlayerTurn,
     checkDraw,
     checkValidMove,
+    resetBoard,
   };
 })();
