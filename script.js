@@ -35,6 +35,7 @@ const gameBoard = (() => {
       board[row][col] = player.marker;
       gameController.checkWin(board);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
+      gameController.showPlayerTurn(currentPlayer);
       console.log(gameBoard.getBoard());
       if (gameController.checkDraw(board) && !gameController.checkWin(board)) {
         console.log("DRAW");
@@ -211,6 +212,17 @@ const gameController = (() => {
     return gameBoard.player1;
   }
 
+  function showPlayerTurn(currentPlayer) {
+    const currentMarker = document.querySelector(".current-player-marker");
+
+    if (currentPlayer === gameBoard.player1) {
+      currentMarker.textContent = gameBoard.player1.marker;
+    } else if (currentPlayer === gameBoard.player2) {
+      currentMarker.textContent = gameBoard.player2.marker;
+    }
+  }
+  showPlayerTurn(gameBoard.currentPlayer);
+
   function resetBoard(board) {
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
@@ -225,5 +237,6 @@ const gameController = (() => {
     checkDraw,
     checkValidMove,
     resetBoard,
+    showPlayerTurn,
   };
 })();
