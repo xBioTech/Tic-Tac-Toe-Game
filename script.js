@@ -5,8 +5,8 @@ const gameBoard = (() => {
   const grid = document.querySelector(".grid");
   const player = (name, marker) => ({ name, marker });
 
-  const player1 = player("player1", "X");
-  const player2 = player("player2", "O");
+  let player1 = player("player1", "X");
+  let player2 = player("player2", "O");
 
   let currentPlayer = player1;
 
@@ -17,7 +17,7 @@ const gameBoard = (() => {
         board[i][j] = "";
         const gameboardButtons = document.createElement("button");
         gameboardButtons.addEventListener("click", () => {
-          makeMove(currentPlayer, i, j);
+          makeMove(i, j);
         });
         grid.appendChild(gameboardButtons);
       }
@@ -30,9 +30,9 @@ const gameBoard = (() => {
     return board;
   };
 
-  function makeMove(player, row, col) {
+  function makeMove(row, col) {
     if (gameController.checkValidMove(board, row, col)) {
-      board[row][col] = player.marker;
+      board[row][col] = currentPlayer.marker;
       gameController.checkWin(board);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
       gameController.showPlayerTurn(currentPlayer);
@@ -46,6 +46,23 @@ const gameBoard = (() => {
       console.log(gameBoard.getBoard());
     }
   }
+
+  const checkbox = document.getElementById("toggle-checkbox");
+
+  const swapPlayers = function (swappedPlayer) {
+    if (checkbox.checked) {
+      return swappedPlayer;
+    }
+  };
+
+  checkbox.addEventListener("click", () => {
+    player2 = swapPlayers(player1, (player1 = player2));
+    currentPlayer = player1;
+    gameController.showPlayerTurn(currentPlayer);
+    console.log(currentPlayer);
+    console.log(player1);
+    console.log(player2);
+  });
 
   const newGameScreen = document.querySelector(".new-game-screen");
   const gameboardUi = document.querySelector(".gameboard");
