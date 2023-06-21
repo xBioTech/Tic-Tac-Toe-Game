@@ -18,6 +18,7 @@ const gameBoard = (() => {
         const gameboardButtons = document.createElement("button");
         gameboardButtons.addEventListener("click", () => {
           makeMove(i, j);
+          gameboardButtons.textContent = board[i][j];
         });
         grid.appendChild(gameboardButtons);
       }
@@ -110,97 +111,97 @@ const gameController = (() => {
       board[0][2] === gameBoard.player1.marker
     ) {
       // return "You Won";
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player1.name} won horizontal`);
     } else if (
       board[0][0] === gameBoard.player2.marker &&
       board[0][1] === gameBoard.player2.marker &&
       board[0][2] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player2.name} won horizontal`);
     } else if (
       board[1][0] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[1][2] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player1.name} won horizontal`);
     } else if (
       board[1][0] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[1][2] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player2.name} won horizontal`);
     } else if (
       board[2][0] === gameBoard.player1.marker &&
       board[2][1] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player1.name} won horizontal`);
     } else if (
       board[2][0] === gameBoard.player2.marker &&
       board[2][1] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won horizontal`);
+      console.log(`${gameBoard.player2.name} won horizontal`);
     } else if (
       board[0][0] === gameBoard.player1.marker &&
       board[1][0] === gameBoard.player1.marker &&
       board[2][0] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player1.name} won vertical`);
     } else if (
       board[0][0] === gameBoard.player2.marker &&
       board[1][0] === gameBoard.player2.marker &&
       board[2][0] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player2.name} won vertical`);
     } else if (
       board[0][1] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][1] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player1.name} won vertical`);
     } else if (
       board[0][1] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][1] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player2.name} won vertical`);
     } else if (
       board[0][2] === gameBoard.player1.marker &&
       board[1][2] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player1.name} won vertical`);
     } else if (
       board[0][2] === gameBoard.player2.marker &&
       board[1][2] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name} won vertical`);
+      console.log(`${gameBoard.player2.name} won vertical`);
     } else if (
       board[0][0] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name}won diagonal`);
+      console.log(`${gameBoard.player1.name}won diagonal`);
     } else if (
       board[0][0] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name}won diagonal`);
+      console.log(`${gameBoard.player2.name}won diagonal`);
     } else if (
       board[0][2] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][0] === gameBoard.player1.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name}won diagonal`);
+      console.log(`${gameBoard.player1.name}won diagonal`);
     } else if (
       board[0][2] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][0] === gameBoard.player2.marker
     ) {
-      console.log(`${gameBoard.currentPlayer.name}won diagonal`);
+      console.log(`${gameBoard.player2.name}won diagonal`);
     }
   }
 
