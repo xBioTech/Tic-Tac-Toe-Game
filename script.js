@@ -19,6 +19,11 @@ const gameBoard = (() => {
         gameboardButtons.addEventListener("click", () => {
           makeMove(i, j);
           gameboardButtons.textContent = board[i][j];
+          if (board[i][j] === "X") {
+            gameboardButtons.style.color = "#39c4bf";
+          } else {
+            gameboardButtons.style.color = "#f1b142";
+          }
         });
         grid.appendChild(gameboardButtons);
       }
