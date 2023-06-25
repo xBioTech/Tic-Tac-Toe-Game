@@ -153,18 +153,17 @@ body {
   grid-template-columns: repeat(3, 0.4fr);
   justify-items: center;
   row-gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 3em;
 }
 .gameboard .grid button {
   width: 90px;
   height: 90px;
   background-color: #203640;
-  color: white;
   cursor: pointer;
   border-radius: 8px;
   border: none;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .gameboard .footer {
