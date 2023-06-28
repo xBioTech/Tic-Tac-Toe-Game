@@ -48,6 +48,7 @@ const gameBoard = (() => {
     if (gameController.checkValidMove(board, row, col)) {
       board[row][col] = currentPlayer.marker;
       gameController.checkWin(board);
+      showWinState();
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
       gameController.showPlayerTurn(currentPlayer);
       playerMarkerColors(button, row, col);
@@ -60,6 +61,14 @@ const gameBoard = (() => {
     } else {
       console.log("move invalid");
       console.log(gameBoard.getBoard());
+    }
+  }
+
+  function showWinState() {
+    const winState = document.querySelector(".win-state");
+
+    if (gameController.checkWin(board)) {
+      winState.style.display = "block";
     }
   }
 
@@ -126,7 +135,6 @@ const gameController = (() => {
       board[0][1] === gameBoard.player1.marker &&
       board[0][2] === gameBoard.player1.marker
     ) {
-      // return "You Won";
       console.log(`${gameBoard.player1.name} won horizontal`);
 
       gameBoard.allGameboardButtons[0].style.backgroundColor = "#39c4bf";
@@ -135,7 +143,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[1].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[2].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[2].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][0] === gameBoard.player2.marker &&
       board[0][1] === gameBoard.player2.marker &&
       board[0][2] === gameBoard.player2.marker
@@ -148,7 +158,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[1].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[2].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[2].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[1][0] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[1][2] === gameBoard.player1.marker
@@ -160,7 +172,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[5].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[5].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[1][0] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[1][2] === gameBoard.player2.marker
@@ -172,7 +186,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[5].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[5].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[2][0] === gameBoard.player1.marker &&
       board[2][1] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
@@ -184,7 +200,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[7].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[2][0] === gameBoard.player2.marker &&
       board[2][1] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
@@ -196,7 +214,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[7].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][0] === gameBoard.player1.marker &&
       board[1][0] === gameBoard.player1.marker &&
       board[2][0] === gameBoard.player1.marker
@@ -208,7 +228,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[3].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[6].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[6].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][0] === gameBoard.player2.marker &&
       board[1][0] === gameBoard.player2.marker &&
       board[2][0] === gameBoard.player2.marker
@@ -220,7 +242,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[3].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[6].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[6].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][1] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][1] === gameBoard.player1.marker
@@ -232,7 +256,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[7].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[7].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][1] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][1] === gameBoard.player2.marker
@@ -244,7 +270,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[7].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[7].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][2] === gameBoard.player1.marker &&
       board[1][2] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
@@ -256,7 +284,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[5].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][2] === gameBoard.player2.marker &&
       board[1][2] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
@@ -268,7 +298,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[5].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][0] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][2] === gameBoard.player1.marker
@@ -280,7 +312,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][0] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][2] === gameBoard.player2.marker
@@ -292,7 +326,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[8].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[8].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][2] === gameBoard.player1.marker &&
       board[1][1] === gameBoard.player1.marker &&
       board[2][0] === gameBoard.player1.marker
@@ -304,7 +340,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[6].style.backgroundColor = "#39c4bf";
       gameBoard.allGameboardButtons[6].style.color = "#1a2a32";
-    } else if (
+      return true;
+    }
+    if (
       board[0][2] === gameBoard.player2.marker &&
       board[1][1] === gameBoard.player2.marker &&
       board[2][0] === gameBoard.player2.marker
@@ -316,7 +354,9 @@ const gameController = (() => {
       gameBoard.allGameboardButtons[4].style.color = "#1a2a32";
       gameBoard.allGameboardButtons[6].style.backgroundColor = "#f1b142";
       gameBoard.allGameboardButtons[6].style.color = "#1a2a32";
+      return true;
     }
+    return false;
   }
 
   function checkDraw(board) {
