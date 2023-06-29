@@ -48,7 +48,7 @@ const gameBoard = (() => {
     if (gameController.checkValidMove(board, row, col)) {
       board[row][col] = currentPlayer.marker;
       gameController.checkWin(board);
-      showWinState();
+      showWinState(currentPlayer);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
       gameController.showPlayerTurn(currentPlayer);
       playerMarkerColors(button, row, col);
@@ -64,11 +64,32 @@ const gameBoard = (() => {
     }
   }
 
-  function showWinState() {
+  function showWinState(winningPlayer) {
     const winState = document.querySelector(".win-state");
+    const winnerStatus = document.querySelector(".win-lose-status");
+    const winner = document.querySelector(".winner");
+    const gameOverNotification = document.querySelector(".game-over");
 
     if (gameController.checkWin(board)) {
       winState.style.display = "block";
+    }
+
+    if (winningPlayer === player1 && checkbox.checked === true) {
+      winnerStatus.textContent = `${player2.name} won`;
+      winner.textContent = player1.marker;
+      gameOverNotification.style.color = "#f1b142";
+    } else if (winningPlayer === player2 && checkbox.checked === true) {
+      winnerStatus.textContent = `${player1.name} won`;
+      winner.textContent = player2.marker;
+      gameOverNotification.style.color = "#39c4bf";
+    } else if (winningPlayer === player1) {
+      winnerStatus.textContent = `${player1.name} won`;
+      winner.textContent = player1.marker;
+      gameOverNotification.style.color = "#39c4bf";
+    } else {
+      winnerStatus.textContent = `${player2.name} won`;
+      winner.textContent = player2.marker;
+      gameOverNotification.style.color = "#f1b142";
     }
   }
 
