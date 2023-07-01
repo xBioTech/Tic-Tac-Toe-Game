@@ -120,6 +120,8 @@ const gameBoard = (() => {
       setTimeout(() => {
         newGameScreen.style.display = "none";
         gameboardUi.style.display = "block";
+        currentPlayer = player1;
+        gameController.showPlayerTurn(currentPlayer);
       }, 200);
     });
   }
