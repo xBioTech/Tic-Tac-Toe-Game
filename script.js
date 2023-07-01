@@ -420,6 +420,15 @@ const gameController = (() => {
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         board[i][j] = "";
+        gameBoard.allGameboardButtons[0].textContent = "";
+        gameBoard.allGameboardButtons[1].textContent = "";
+        gameBoard.allGameboardButtons[2].textContent = "";
+        gameBoard.allGameboardButtons[3].textContent = "";
+        gameBoard.allGameboardButtons[4].textContent = "";
+        gameBoard.allGameboardButtons[5].textContent = "";
+        gameBoard.allGameboardButtons[6].textContent = "";
+        gameBoard.allGameboardButtons[7].textContent = "";
+        gameBoard.allGameboardButtons[8].textContent = "";
       }
     }
   }
