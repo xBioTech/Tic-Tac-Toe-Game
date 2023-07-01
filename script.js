@@ -64,14 +64,14 @@ const gameBoard = (() => {
     }
   }
 
+  const winState = document.querySelector(".win-state");
+  const winnerStatus = document.querySelector(".win-lose-status");
+  const winner = document.querySelector(".winner");
+  const gameOverNotification = document.querySelector(".game-over");
   function showWinState(winningPlayer) {
-    const winState = document.querySelector(".win-state");
-    const winnerStatus = document.querySelector(".win-lose-status");
-    const winner = document.querySelector(".winner");
-    const gameOverNotification = document.querySelector(".game-over");
-
     if (gameController.checkWin(board)) {
       winState.style.display = "block";
+      gameboardUi.style.opacity = "0.5";
     }
 
     if (winningPlayer === player1 && checkbox.checked === true) {
@@ -139,6 +139,56 @@ const gameBoard = (() => {
     });
   }
   goBackToPlayerSelection();
+
+  function startNextRound() {
+    const nextRoundBtn = document.querySelector(".next-round");
+
+    nextRoundBtn.addEventListener("click", () => {
+      setTimeout(() => {
+        winState.style.display = "none";
+        gameboardUi.style.opacity = "1";
+        gameController.resetBoard(board);
+        allGameboardButtons[0].style.backgroundColor = "#203640";
+        allGameboardButtons[1].style.backgroundColor = "#203640";
+        allGameboardButtons[2].style.backgroundColor = "#203640";
+        allGameboardButtons[3].style.backgroundColor = "#203640";
+        allGameboardButtons[4].style.backgroundColor = "#203640";
+        allGameboardButtons[5].style.backgroundColor = "#203640";
+        allGameboardButtons[6].style.backgroundColor = "#203640";
+        allGameboardButtons[7].style.backgroundColor = "#203640";
+        allGameboardButtons[8].style.backgroundColor = "#203640";
+        currentPlayer = player1;
+        gameController.showPlayerTurn(currentPlayer);
+      }, 200);
+    });
+  }
+  startNextRound();
+
+  function quitToMainMenu() {
+    const quitBtn = document.querySelector(".quit");
+
+    quitBtn.addEventListener("click", () => {
+      setTimeout(() => {
+        winState.style.display = "none";
+        gameboardUi.style.display = "none";
+        gameboardUi.style.opacity = "1";
+        newGameScreen.style.display = "flex";
+        gameController.resetBoard(board);
+        currentPlayer = player1;
+        gameController.showPlayerTurn(currentPlayer);
+        allGameboardButtons[0].style.backgroundColor = "#203640";
+        allGameboardButtons[1].style.backgroundColor = "#203640";
+        allGameboardButtons[2].style.backgroundColor = "#203640";
+        allGameboardButtons[3].style.backgroundColor = "#203640";
+        allGameboardButtons[4].style.backgroundColor = "#203640";
+        allGameboardButtons[5].style.backgroundColor = "#203640";
+        allGameboardButtons[6].style.backgroundColor = "#203640";
+        allGameboardButtons[7].style.backgroundColor = "#203640";
+        allGameboardButtons[8].style.backgroundColor = "#203640";
+      }, 200);
+    });
+  }
+  quitToMainMenu();
 
   return {
     board,
