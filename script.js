@@ -68,31 +68,54 @@ const gameBoard = (() => {
   const winnerStatus = document.querySelector(".win-lose-status");
   const winner = document.querySelector(".winner");
   const gameOverNotification = document.querySelector(".game-over");
+  let player1Score = 0;
+  let player2Score = 0;
+  let drawScore = 0;
+  const winIndicatorX = document.querySelector(".x");
+  const winIndicatorO = document.querySelector(".o");
+  const drawIndicator = document.querySelector(".draw");
+
   function showWinState(winningPlayer) {
     if (gameController.checkWin(board)) {
       winState.style.display = "block";
       gameboardUi.style.opacity = "0.5";
-    }
 
-    if (winningPlayer === player1 && checkbox.checked === true) {
-      winnerStatus.textContent = `${player2.name} won`;
-      winner.textContent = player1.marker;
-      gameOverNotification.style.color = "#f1b142";
-    } else if (winningPlayer === player2 && checkbox.checked === true) {
-      winnerStatus.textContent = `${player1.name} won`;
-      winner.textContent = player2.marker;
-      gameOverNotification.style.color = "#39c4bf";
-    } else if (winningPlayer === player1) {
-      winnerStatus.textContent = `${player1.name} won`;
-      winner.textContent = player1.marker;
-      gameOverNotification.style.color = "#39c4bf";
-    } else {
-      winnerStatus.textContent = `${player2.name} won`;
-      winner.textContent = player2.marker;
-      gameOverNotification.style.color = "#f1b142";
+      if (winningPlayer === player1 && checkbox.checked === true) {
+        winnerStatus.textContent = `${player2.name} won`;
+        winner.textContent = player1.marker;
+        gameOverNotification.style.color = "#f1b142";
+        player2Score += 1;
+        winIndicatorO.textContent = player2Score;
+      } else if (winningPlayer === player2 && checkbox.checked === true) {
+        winnerStatus.textContent = `${player1.name} won`;
+        winner.textContent = player2.marker;
+        gameOverNotification.style.color = "#39c4bf";
+        player1Score += 1;
+        winIndicatorX.textContent = player1Score;
+      } else if (winningPlayer === player1) {
+        winnerStatus.textContent = `${player1.name} won`;
+        winner.textContent = player1.marker;
+        gameOverNotification.style.color = "#39c4bf";
+        player1Score += 1;
+        winIndicatorX.textContent = player1Score;
+      } else {
+        winnerStatus.textContent = `${player2.name} won`;
+        winner.textContent = player2.marker;
+        gameOverNotification.style.color = "#f1b142";
+        player2Score += 1;
+        winIndicatorO.textContent = player2Score;
+      }
+    }
+    if (gameController.checkDraw(board)) {
+      winState.style.display = "block";
+      gameboardUi.style.opacity = "0.5";
+      winnerStatus.textContent = "It's a Draw";
+      winner.textContent = "Nobody";
+      gameOverNotification.style.color = "#a9bfc9";
+      drawScore += 1;
+      drawIndicator.textContent = drawScore;
     }
   }
-
   const checkbox = document.getElementById("toggle-checkbox");
 
   const swapPlayers = function (swappedPlayer) {
