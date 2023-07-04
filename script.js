@@ -47,6 +47,7 @@ const gameBoard = (() => {
   function makeMove(row, col, button) {
     if (gameController.checkValidMove(board, row, col)) {
       board[row][col] = currentPlayer.marker;
+      makeRandomPlayer2Move(board);
       gameController.checkWin(board);
       showWinState(currentPlayer);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
@@ -61,6 +62,34 @@ const gameBoard = (() => {
     } else {
       console.log("move invalid");
       console.log(gameBoard.getBoard());
+    }
+  }
+
+  function makeRandomPlayer2Move(board) {
+    const emptyCells = [];
+
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j] === "") {
+          emptyCells.push([i, j]);
+        }
+      }
+    }
+
+    if (emptyCells.length > 0 && !gameController.checkWin(board)) {
+      const randomIndex = Math.floor(Math.random() * emptyCells.length);
+      const [row, col] = emptyCells[randomIndex];
+
+      setTimeout(() => {
+        board[row][col] = player2.marker;
+        const button = allGameboardButtons[row * 3 + col];
+        button.textContent = player2.marker;
+
+        showWinState(currentPlayer);
+        currentPlayer = gameController.switchPlayerTurn(currentPlayer);
+        gameController.showPlayerTurn(currentPlayer);
+        playerMarkerColors(button, row, col);
+      }, 400);
     }
   }
 
@@ -106,7 +135,7 @@ const gameBoard = (() => {
         winIndicatorO.textContent = player2Score;
       }
     }
-    if (gameController.checkDraw(board)) {
+    if (gameController.checkDraw(board) && !gameController.checkWin(board)) {
       winState.style.display = "block";
       gameboardUi.style.opacity = "0.5";
       winnerStatus.textContent = "It's a Draw";
