@@ -47,7 +47,7 @@ const gameBoard = (() => {
   function makeMove(row, col, button) {
     if (gameController.checkValidMove(board, row, col)) {
       board[row][col] = currentPlayer.marker;
-      makeRandomPlayer2Move(board);
+      makeRandomBotMove();
       gameController.checkWin(board);
       showWinState(currentPlayer);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
@@ -65,7 +65,15 @@ const gameBoard = (() => {
     }
   }
 
-  function makeRandomPlayer2Move(board) {
+  function reCheckWinToApplyButtonStylesCorrectly() {
+    if (gameController.checkWin(board)) {
+      setTimeout(() => {
+        gameController.checkWin(board);
+      }, 10);
+    }
+  }
+
+  function makeRandomBotMove() {
     const emptyCells = [];
 
     for (let i = 0; i < board.length; i++) {
@@ -84,7 +92,7 @@ const gameBoard = (() => {
         board[row][col] = player2.marker;
         const button = allGameboardButtons[row * 3 + col];
         button.textContent = player2.marker;
-
+        reCheckWinToApplyButtonStylesCorrectly();
         showWinState(currentPlayer);
         currentPlayer = gameController.switchPlayerTurn(currentPlayer);
         gameController.showPlayerTurn(currentPlayer);
@@ -187,6 +195,12 @@ const gameBoard = (() => {
         gameboardUi.style.display = "none";
         newGameScreen.style.display = "flex";
         gameController.resetBoard(board);
+        player1Score = 0;
+        winIndicatorX.textContent = "0";
+        player2Score = 0;
+        winIndicatorO.textContent = "0";
+        drawScore = 0;
+        drawIndicator.textContent = "0";
       }, 200);
     });
   }
@@ -237,6 +251,12 @@ const gameBoard = (() => {
         allGameboardButtons[6].style.backgroundColor = "#203640";
         allGameboardButtons[7].style.backgroundColor = "#203640";
         allGameboardButtons[8].style.backgroundColor = "#203640";
+        player1Score = 0;
+        winIndicatorX.textContent = "0";
+        player2Score = 0;
+        winIndicatorO.textContent = "0";
+        drawScore = 0;
+        drawIndicator.textContent = "0";
       }, 200);
     });
   }
