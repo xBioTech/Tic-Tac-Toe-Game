@@ -47,7 +47,7 @@ This project was created as part of the Odin Project curriculum, an open-source 
 - 2d Arrays
 - I have improved my ability to decompose larger and more complex problems
 
-I added a code snippet below to illustrate how i used Flexbox building this Project
+I added some small code snippets below to illustrate my workwise
 
 ```javascript
 const gameBoard = (() => {
