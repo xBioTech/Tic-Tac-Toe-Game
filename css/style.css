@@ -238,4 +238,11 @@ body {
   border-bottom: 6px solid #ca8827;
 }
 
+@media only screen and (min-width: 768px) {
+  .gameboard {
+    margin-left: 28rem;
+    margin-right: 28rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
