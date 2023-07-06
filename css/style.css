@@ -240,8 +240,42 @@ body {
 
 @media only screen and (min-width: 768px) {
   .gameboard {
-    margin-left: 28rem;
-    margin-right: 28rem;
+    margin-left: 13rem;
+    margin-right: 13rem;
+    margin-top: 8rem;
+  }
+  .win-state {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .gameboard {
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 8rem;
+  }
+  .win-state {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .gameboard {
+    margin-left: 40rem;
+    margin-right: 40rem;
+    margin-top: 8rem;
+  }
+  .win-state {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .gameboard {
+    margin-left: 48rem;
+    margin-right: 48rem;
+    margin-top: 8rem;
+  }
+  .win-state {
+    width: 100%;
   }
 }
 
