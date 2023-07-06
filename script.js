@@ -47,7 +47,9 @@ const gameBoard = (() => {
   function makeMove(row, col, button) {
     if (gameController.checkValidMove(board, row, col)) {
       board[row][col] = currentPlayer.marker;
-      makeRandomBotMove();
+      if (isNewGameVsBot) {
+        makeRandomBotMove();
+      }
       gameController.checkWin(board);
       showWinState(currentPlayer);
       currentPlayer = gameController.switchPlayerTurn(currentPlayer);
@@ -187,6 +189,22 @@ const gameBoard = (() => {
   }
   startNewGame();
 
+  let isNewGameVsBot = false;
+  function startNewGameVsBot() {
+    const newGameButtonVsBot = document.querySelector(".vs-bot");
+
+    newGameButtonVsBot.addEventListener("click", () => {
+      setTimeout(() => {
+        isNewGameVsBot = true;
+        newGameScreen.style.display = "none";
+        gameboardUi.style.display = "block";
+        currentPlayer = player1;
+        gameController.showPlayerTurn(currentPlayer);
+      }, 200);
+    });
+  }
+  startNewGameVsBot();
+
   function goBackToPlayerSelection() {
     const backBtn = document.querySelector(".back-btn");
 
@@ -201,6 +219,7 @@ const gameBoard = (() => {
         winIndicatorO.textContent = "0";
         drawScore = 0;
         drawIndicator.textContent = "0";
+        isNewGameVsBot = false;
       }, 200);
     });
   }
@@ -257,6 +276,7 @@ const gameBoard = (() => {
         winIndicatorO.textContent = "0";
         drawScore = 0;
         drawIndicator.textContent = "0";
+        isNewGameVsBot = false;
       }, 200);
     });
   }

@@ -90,6 +90,8 @@ body {
 }
 .new-game-screen .new-game-buttons {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
 }
 .new-game-screen .new-game-buttons .new-game-btn {
@@ -104,6 +106,10 @@ body {
 }
 .new-game-screen .new-game-buttons .new-game-btn:active {
   transform: scale(0.8);
+}
+.new-game-screen .new-game-buttons .vs-bot {
+  background-color: #39c4bf;
+  border-bottom: 5px solid #228a87;
 }
 
 .gameboard {
